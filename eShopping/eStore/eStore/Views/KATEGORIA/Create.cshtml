@@ -1,0 +1,69 @@
+﻿@model DataAccess.KATEGORIA
+
+@{
+    ViewBag.Title = "Regjistrimi i kategorise";
+    ViewBag.hasReturn = true;
+    ViewBag.action = "Index";
+    ViewBag.controller = "KATEGORIA";
+    ViewBag.paramName = null;
+}
+
+ 
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-primary">
+        <div class="box-header"></div>
+        <div class="box-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+         
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Emertimi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Emertimi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Emertimi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pershkrimi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Pershkrimi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Pershkrimi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KategoriaPrindID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.KategoriaPrindID, null, "Zgjedhe", htmlAttributes: new { @class = "form-control select2" })
+                        @Html.ValidationMessageFor(model => model.KategoriaPrindID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Aktiv, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="checkbox">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Aktiv, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Aktiv, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+               
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ruaj"  class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+}
+
+ 

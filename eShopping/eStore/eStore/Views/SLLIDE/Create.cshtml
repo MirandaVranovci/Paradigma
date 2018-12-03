@@ -1,0 +1,163 @@
+﻿@model DataAccess.SLLIDE
+
+@{
+    ViewBag.Title = "Krijimi i slideve";
+    ViewBag.hasReturn = true;
+    ViewBag.action = "Index";
+    ViewBag.controller = "SLLIDE";
+    ViewBag.paramName = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div ckass="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">Ngarkoni foto</div>
+                <div class="box-body" data-step="16" data-intro="msg" data-position="right" data-scrollTo='tooltip'>
+                    <input type="file" id="fileUpload">
+                    <div class="uploadbox" id="uploadbox"></div><br />
+                    <button type="button" class="btn btn-primary btn-sm" id="btnuploadfile" style="float:left">
+                        <i class="fa fa-upload"></i>&nbsp; Ngarko
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    Te dhenat
+                </div>
+                <div class="box-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SllideTitulli, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SllideTitulli, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SllideTitulli, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SllidePershkrimi, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SllidePershkrimi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SllidePershkrimi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderNr, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OrderNr, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OrderNr, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Linku, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Linku, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Linku, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+               
+                    <input type="submit" value="Ruaj" class="btn btn-primary" />
+                 
+            </div>
+        </div>
+
+
+
+
+    </div>
+}
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+ 
+<script>
+    var token = $('input[name="__RequestVerificationToken"]').val();
+
+        var loaduploads = function (id) {
+            var obj = { __RequestVerificationToken: token };
+
+            $.ajax({
+                url: "@Url.Action("LoadFiles","SLLIDE")",
+                cache: false,
+                type: "POST",
+                dataType: "html",
+                data: obj,
+                success: function (rs) {
+                    $("#uploadbox").html(rs);
+                  
+                 
+
+                },
+                error: function (jqXHR, error, errorThrown) {
+                    if (jqXHR.status && jqXHR.status == 400) {
+                        console.log(jqXHR.responseText);
+                    } else {
+                        console.log("Something went wrong");
+                    }
+                }
+            });
+        }
+        $(document).ready(function () {
+
+            $('#btnuploadfile').on('click', function () {
+                $('#myalert').css("visibility", "hidden");
+
+                var id = $(this).data("id");
+
+                var files = $("#fileUpload").get(0).files;
+                // Add the uploaded image content to the form data collection
+                if (files.length > 0) {
+                    var data = new FormData();
+
+                    for (var i = 0; i < files.length; i++) {
+
+                        data.append("UploadedImage", files[i]);
+                    }
+
+                    data.append("__RequestVerificationToken", token);
+                    // Make Ajax request with the contentType = false, and procesDate = false
+                    //var ajaxRequest =
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("UploadFile","SLLIDE")",
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (retObj) {
+                            if (retObj.Status == true) {
+                                $("#msg").html("").append(retObj.Message)
+                                $("#myalert").removeClass().addClass("alert alert-success alert-dismissible");
+                                $('#myalert').css("visibility", "visible");
+                               loaduploads();
+
+                            }
+                            else {
+                                $("#msg").html("").append(retObj.Message)
+                                $("#myalert").removeClass().addClass("alert alert-info alert-dismissible");
+                                $('#myalert').css("visibility", "visible");
+                            }
+                        },
+                        error: function () {
+                            $("#msg").html("").append(retObj.Message)
+                            $("#myalert").removeClass().addClass("alert alert-info alert-dismissible");
+                            $('#myalert').css("visibility", "visible");
+                        }
+                    });
+                     
+                }
+            });
+
+            loaduploads();
+        });
+
+</script>

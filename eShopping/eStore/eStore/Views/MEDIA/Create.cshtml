@@ -1,0 +1,97 @@
+﻿@model DataAccess.MEDIAT
+@{
+    ViewBag.Title = "Ruaj Media";
+    ViewBag.hasReturn = true;
+    ViewBag.action = "Index";
+    ViewBag.controller = "MEDIA";
+    ViewBag.paramName = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            Mediat
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-primary" style="border-right:1px solid lightgray;border-left:1px solid lightgray;border-bottom:1px solid lightgray">
+                        <div class="box-header with-border">
+                            Shto foto
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-primary btn-xs" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="box-body">
+                            <br />
+                            <input id="fileUpload" type="file" />
+                            <br />
+                            <button id="NgarkoFile" class="btn btn-primary btn-sm" type="button">Ngarko</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6" id="uploads">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    var token = $('input[name="__RequestVerificationToken"]').val();
+            var loaduploads = function (id) {
+            var obj = { __RequestVerificationToken: token };
+
+            $.ajax({
+                url: "@Url.Action("LoadFiles","MEDIA")",
+                cache: false,
+                type: "POST",
+                dataType: "html",
+                data: obj,
+                success: function (rs) {
+                    $("#uploads").html(rs);
+                },
+                error: function (jqXHR, error, errorThrown) {
+                    if (jqXHR.status && jqXHR.status == 400) {
+                        console.log(jqXHR.responseText);
+                    } else {
+                        console.log("Something went wrong");
+                    }
+                }
+            });
+        }
+    $(document).ready(function () {
+        $("#NgarkoFile").click(function () {
+            var data = new FormData();
+            var Pershkrimi = $("#Pershkrimi").val();
+            var files = $("#fileUpload").get(0).files;
+            // Add the uploaded image content to the form data collection
+            if (files.length > 0) {
+                data.append("UploadedImage", files[0]);
+            }
+            data.append("__RequestVerificationToken", token);
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: '/desk/MEDIA/UploadFileAsync',
+                contentType: false,
+                processData: false,
+                data: data
+            });
+
+            ajaxRequest.done(function (xhr, textStatus) {
+                // Do other operation
+                loaduploads();
+            });
+        });
+    });
+
+</script>
+
+

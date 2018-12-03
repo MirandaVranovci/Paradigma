@@ -1,0 +1,133 @@
+﻿@model eStore.Models.EditMenuViewModel
+@{
+    ViewBag.Title = "Modifikimi i menuse";
+
+    // parametrat per formimin e butonit per kthim prapa
+    ViewBag.hasReturn = true;
+    ViewBag.action = "Index";
+    ViewBag.controller = "USER";
+    ViewBag.paramName = null;
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.parenti.ID)
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        <div class="row">
+            <div class="col-md-6 col-sm-12" id="test">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        Te dhenat per parent
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group" data-step="1" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.parenti.Pershkrimi, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.parenti.Pershkrimi, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-step="2" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.parenti.HtmlClass, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.parenti.HtmlClass, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-step="3" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.parenti.RoleID, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.parenti.RoleID, ViewBag.RoleID as SelectList, "Zgjedhe", htmlAttributes: new { @class = "form-control select2" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.parenti.Renditja, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.parenti.Renditja, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        Te dhenat per metoda
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.sysmenu.Pershkrimi, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.sysmenu.Pershkrimi, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.sysmenu.HtmlClass, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.sysmenu.HtmlClass, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.sysmenu.Controller, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.sysmenu.Controller, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.sysmenu.ActionName, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.sysmenu.ActionName, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.sysmenu.ParentID, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.sysmenu.ParentID, ViewBag.ParentID as SelectList, "Zgjedhe", htmlAttributes: new { @class = "form-control select2" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.sysmenu.RoleID, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.sysmenu.RoleID, ViewBag.RolesIDM as SelectList, "Zgjedhe", htmlAttributes: new { @class = "form-control select2" })
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-step="4" data-intro="MSG" data-position="right" data-scrollTo='tooltip'>
+                            @Html.LabelFor(m => m.sysmenu.Renditja, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.sysmenu.Renditja, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <button type="submit" title="Ruaj" class="btn btn-primary " style="float:left">
+                            Ruaj
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

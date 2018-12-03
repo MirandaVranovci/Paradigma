@@ -1,0 +1,9 @@
+﻿@model IEnumerable<DataAccess.MEDIAT>
+
+@{
+    Layout = null;
+} 
+@foreach (var item in Model)
+{
+    <img class="img-responsive" style="width:200px; height:auto;" src="~/@item.Shtegu" alt="@item.Emri">
+}

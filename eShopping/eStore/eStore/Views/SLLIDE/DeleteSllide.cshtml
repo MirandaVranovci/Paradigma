@@ -1,0 +1,43 @@
+﻿@model eStore.Models.DeleteSlideViewModel
+@{
+    ViewBag.Title = "DeleteSllide";
+    Layout = null;
+}
+<p>Jeni te sigurte qe deshironi te fshini kete slide?</p>
+<button class="btn btn-danger btn-flat" data-id="@Model.id"  onclick="ConfirmDelete(this)" style="margin-right:5px">
+    <i class="fa fa-trash-o" style="font-size:1.1em"></i>&nbsp;
+    Po
+</button>
+<button class="btn btn-default btn-flat" data-dismiss="modal" id="dismissmodalid">
+    <i class="fa fa-refresh" style="font-size:1.1em"></i>&nbsp;
+    Jo
+</button>
+
+<script type="text/javascript">
+
+    var ConfirmDelete = function (btn) {
+        var obj = {id: $(btn).data("id")};
+
+        $.ajax({
+            url: "/SLLIDE/DeleteChosenSlide_POST",
+            cache: false,
+            type: "POST",
+            dataType: "html",
+            data: obj,
+            success: function (rs) {
+                console.log(rs);
+                 
+                $("#dismissmodalid1").trigger("click");
+                 window.location.href = '@Url.Action("Index", "SLLIDE")',true;
+            },
+            error: function (jqXHR, error, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    console.log(jqXHR.responseText);
+                } else {
+                    console.log("Something went wrong");
+                }
+            }
+        });
+    }
+</script>
+

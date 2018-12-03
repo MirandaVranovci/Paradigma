@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="eStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="KARTELAs" EntityType="eStoreModel.KARTELA" />
+    <EntitySet Name="KATEGORIAs" EntityType="eStoreModel.KATEGORIA" />
+    <EntitySet Name="KTHIMET_POROSIA" EntityType="eStoreModel.KTHIMET_POROSIA" />
+    <EntitySet Name="LLOJI_PAGESES" EntityType="eStoreModel.LLOJI_PAGESES" />
+    <EntitySet Name="LOGs" EntityType="eStoreModel.LOG" />
+    <EntitySet Name="LOG_ENTRY" EntityType="eStoreModel.LOG_ENTRY" />
+    <EntitySet Name="LOG_USERACTIVITY" EntityType="eStoreModel.LOG_USERACTIVITY" />
+    <EntitySet Name="MEDIATs" EntityType="eStoreModel.MEDIAT" />
+    <EntitySet Name="NJOFTIMETs" EntityType="eStoreModel.NJOFTIMET" />
+    <EntitySet Name="NUMRATs" EntityType="eStoreModel.NUMRAT" />
+    <EntitySet Name="PERDORUESIs" EntityType="eStoreModel.PERDORUESI" />
+    <EntitySet Name="PERDORUESI_GRUPI" EntityType="eStoreModel.PERDORUESI_GRUPI" />
+    <EntitySet Name="POROSIAs" EntityType="eStoreModel.POROSIA" />
+    <EntitySet Name="PRODHUESIs" EntityType="eStoreModel.PRODHUESI" />
+    <EntitySet Name="PRODUKTIs" EntityType="eStoreModel.PRODUKTI" />
+    <EntitySet Name="PRODUKTI_IN_KATEGORIA" EntityType="eStoreModel.PRODUKTI_IN_KATEGORIA" />
+    <EntitySet Name="PRODUKTI_IN_MEDIA" EntityType="eStoreModel.PRODUKTI_IN_MEDIA" />
+    <EntitySet Name="PRODUKTI_IN_POROSIA" EntityType="eStoreModel.PRODUKTI_IN_POROSIA" />
+    <EntitySet Name="SLLIDEs" EntityType="eStoreModel.SLLIDE" />
+    <EntitySet Name="STATUSI_PAGESES" EntityType="eStoreModel.STATUSI_PAGESES" />
+    <EntitySet Name="STOKUs" EntityType="eStoreModel.STOKU" />
+    <EntitySet Name="SYSMENUs" EntityType="eStoreModel.SYSMENU" />
+    <EntitySet Name="SYSMENU_PARENT" EntityType="eStoreModel.SYSMENU_PARENT" />
+    <AssociationSet Name="FK_KARTELA_PERDORUESI" Association="eStoreModel.FK_KARTELA_PERDORUESI">
+      <End Role="PERDORUESI" EntitySet="PERDORUESIs" />
+      <End Role="KARTELA" EntitySet="KARTELAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POROSIA_KARTELA" Association="eStoreModel.FK_POROSIA_KARTELA">
+      <End Role="KARTELA" EntitySet="KARTELAs" />
+      <End Role="POROSIA" EntitySet="POROSIAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_KATEGORIA_KATEGORIA" Association="eStoreModel.FK_PRODUKTI_IN_KATEGORIA_KATEGORIA">
+      <End Role="KATEGORIA" EntitySet="KATEGORIAs" />
+      <End Role="PRODUKTI_IN_KATEGORIA" EntitySet="PRODUKTI_IN_KATEGORIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KTHIMET_POROSIA_PERDORUESI" Association="eStoreModel.FK_KTHIMET_POROSIA_PERDORUESI">
+      <End Role="PERDORUESI" EntitySet="PERDORUESIs" />
+      <End Role="KTHIMET_POROSIA" EntitySet="KTHIMET_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA" Association="eStoreModel.FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA">
+      <End Role="PRODUKTI_IN_POROSIA" EntitySet="PRODUKTI_IN_POROSIA" />
+      <End Role="KTHIMET_POROSIA" EntitySet="KTHIMET_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POROSIA_LLOJI_PAGESES" Association="eStoreModel.FK_POROSIA_LLOJI_PAGESES">
+      <End Role="LLOJI_PAGESES" EntitySet="LLOJI_PAGESES" />
+      <End Role="POROSIA" EntitySet="POROSIAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_MEDIA_MEDIA" Association="eStoreModel.FK_PRODUKTI_IN_MEDIA_MEDIA">
+      <End Role="MEDIAT" EntitySet="MEDIATs" />
+      <End Role="PRODUKTI_IN_MEDIA" EntitySet="PRODUKTI_IN_MEDIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SLLIDE_MEDIA" Association="eStoreModel.FK_SLLIDE_MEDIA">
+      <End Role="MEDIAT" EntitySet="MEDIATs" />
+      <End Role="SLLIDE" EntitySet="SLLIDEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NJOFTIMET_PERDORUESI" Association="eStoreModel.FK_NJOFTIMET_PERDORUESI">
+      <End Role="PERDORUESI" EntitySet="PERDORUESIs" />
+      <End Role="NJOFTIMET" EntitySet="NJOFTIMETs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NJOFTIMET_PERDORUESI1" Association="eStoreModel.FK_NJOFTIMET_PERDORUESI1">
+      <End Role="PERDORUESI" EntitySet="PERDORUESIs" />
+      <End Role="NJOFTIMET" EntitySet="NJOFTIMETs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POROSIA_PERDORUESI" Association="eStoreModel.FK_POROSIA_PERDORUESI">
+      <End Role="PERDORUESI" EntitySet="PERDORUESIs" />
+      <End Role="POROSIA" EntitySet="POROSIAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POROSIA_STATUSI" Association="eStoreModel.FK_POROSIA_STATUSI">
+      <End Role="STATUSI_PAGESES" EntitySet="STATUSI_PAGESES" />
+      <End Role="POROSIA" EntitySet="POROSIAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_POROSIA_POROSIA" Association="eStoreModel.FK_PRODUKTI_IN_POROSIA_POROSIA">
+      <End Role="POROSIA" EntitySet="POROSIAs" />
+      <End Role="PRODUKTI_IN_POROSIA" EntitySet="PRODUKTI_IN_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_PRODHUESI" Association="eStoreModel.FK_PRODUKTI_PRODHUESI">
+      <End Role="PRODHUESI" EntitySet="PRODHUESIs" />
+      <End Role="PRODUKTI" EntitySet="PRODUKTIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_KATEGORIA_PRODUKTI" Association="eStoreModel.FK_PRODUKTI_IN_KATEGORIA_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTIs" />
+      <End Role="PRODUKTI_IN_KATEGORIA" EntitySet="PRODUKTI_IN_KATEGORIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_MEDIA_PRODUKTI" Association="eStoreModel.FK_PRODUKTI_IN_MEDIA_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTIs" />
+      <End Role="PRODUKTI_IN_MEDIA" EntitySet="PRODUKTI_IN_MEDIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_POROSIA_PRODUKTI" Association="eStoreModel.FK_PRODUKTI_IN_POROSIA_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTIs" />
+      <End Role="PRODUKTI_IN_POROSIA" EntitySet="PRODUKTI_IN_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STOKU_PRODUKTI" Association="eStoreModel.FK_STOKU_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTIs" />
+      <End Role="STOKU" EntitySet="STOKUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SYSMENU_SYSMENU_PARENT" Association="eStoreModel.FK_SYSMENU_SYSMENU_PARENT">
+      <End Role="SYSMENU_PARENT" EntitySet="SYSMENU_PARENT" />
+      <End Role="SYSMENU" EntitySet="SYSMENUs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="KARTELA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumriXhirollogarise" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="PerdoruesiID" Type="Int32" Nullable="false" />
+    <Property Name="Kodi" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="DataSkadimit" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PERDORUESI" Relationship="eStoreModel.FK_KARTELA_PERDORUESI" FromRole="KARTELA" ToRole="PERDORUESI" />
+    <NavigationProperty Name="POROSIAs" Relationship="eStoreModel.FK_POROSIA_KARTELA" FromRole="KARTELA" ToRole="POROSIA" />
+  </EntityType>
+  <EntityType Name="KATEGORIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emertimi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pershkrimi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Aktiv" Type="Boolean" />
+    <Property Name="KategoriaPrindID" Type="Int32" />
+    <NavigationProperty Name="PRODUKTI_IN_KATEGORIA" Relationship="eStoreModel.FK_PRODUKTI_IN_KATEGORIA_KATEGORIA" FromRole="KATEGORIA" ToRole="PRODUKTI_IN_KATEGORIA" />
+  </EntityType>
+  <EntityType Name="KTHIMET_POROSIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PorosiaProduktiID" Type="Int32" Nullable="false" />
+    <Property Name="PerdoruesiID" Type="Int32" Nullable="false" />
+    <Property Name="DataKthimit" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Arsyeja" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PERDORUESI" Relationship="eStoreModel.FK_KTHIMET_POROSIA_PERDORUESI" FromRole="KTHIMET_POROSIA" ToRole="PERDORUESI" />
+    <NavigationProperty Name="PRODUKTI_IN_POROSIA" Relationship="eStoreModel.FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA" FromRole="KTHIMET_POROSIA" ToRole="PRODUKTI_IN_POROSIA" />
+  </EntityType>
+  <EntityType Name="LLOJI_PAGESES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emertimi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="POROSIAs" Relationship="eStoreModel.FK_POROSIA_LLOJI_PAGESES" FromRole="LLOJI_PAGESES" ToRole="POROSIA" />
+  </EntityType>
+  <EntityType Name="LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogID" Type="Guid" Nullable="false" />
+    <Property Name="EventType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TableName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RecordID" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ColumnName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NewValue" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="OriginalValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Created_by" Type="Int32" Nullable="false" />
+    <Property Name="Created_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="LOG_ENTRY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PerdoruesiID" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="LOG_USERACTIVITY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PerdoruesiID" Type="Int32" Nullable="false" />
+    <Property Name="Activity" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HttpMethod" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="MEDIAT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pershkrimi" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Emri" Type="Guid" Nullable="false" />
+    <Property Name="Extensioni" Type="Int32" Nullable="false" />
+    <Property Name="Shtegu" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Createdby" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PRODUKTI_IN_MEDIA" Relationship="eStoreModel.FK_PRODUKTI_IN_MEDIA_MEDIA" FromRole="MEDIAT" ToRole="PRODUKTI_IN_MEDIA" />
+    <NavigationProperty Name="SLLIDEs" Relationship="eStoreModel.FK_SLLIDE_MEDIA" FromRole="MEDIAT" ToRole="SLLIDE" />
+  </EntityType>
+  <EntityType Name="NJOFTIMET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FromUserID" Type="Int32" Nullable="false" />
+    <Property Name="ToUserID" Type="Int32" />
+    <Property Name="FromU" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ToU" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ToUser" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PERDORUESI" Relationship="eStoreModel.FK_NJOFTIMET_PERDORUESI" FromRole="NJOFTIMET" ToRole="PERDORUESI" />
+    <NavigationProperty Name="PERDORUESI1" Relationship="eStoreModel.FK_NJOFTIMET_PERDORUESI1" FromRole="NJOFTIMET" ToRole="PERDORUESI" />
+  </EntityType>
+  <EntityType Name="NUMRAT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numri" Type="Int32" Nullable="false" />
+    <Property Name="Tipi" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PERDORUESI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Emri" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Mbiemri" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Datelindja" Type="DateTime" Precision="3" />
+    <Property Name="Password" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="Aktiv" Type="Boolean" />
+    <Property Name="Telefoni" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KodiPostar" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="Adresa" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Roles" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="KARTELAs" Relationship="eStoreModel.FK_KARTELA_PERDORUESI" FromRole="PERDORUESI" ToRole="KARTELA" />
+    <NavigationProperty Name="KTHIMET_POROSIA" Relationship="eStoreModel.FK_KTHIMET_POROSIA_PERDORUESI" FromRole="PERDORUESI" ToRole="KTHIMET_POROSIA" />
+    <NavigationProperty Name="NJOFTIMETs" Relationship="eStoreModel.FK_NJOFTIMET_PERDORUESI" FromRole="PERDORUESI" ToRole="NJOFTIMET" />
+    <NavigationProperty Name="NJOFTIMETs1" Relationship="eStoreModel.FK_NJOFTIMET_PERDORUESI1" FromRole="PERDORUESI" ToRole="NJOFTIMET" />
+    <NavigationProperty Name="POROSIAs" Relationship="eStoreModel.FK_POROSIA_PERDORUESI" FromRole="PERDORUESI" ToRole="POROSIA" />
+  </EntityType>
+  <EntityType Name="PERDORUESI_GRUPI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GrupiPershkrimi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="POROSIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LlojiPagesesID" Type="Int32" Nullable="false" />
+    <Property Name="StatusiPorosiaID" Type="Int32" Nullable="false" />
+    <Property Name="PerdoruesiID" Type="Int32" Nullable="false" />
+    <Property Name="DataPorosise" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DataPageses" Type="DateTime" Precision="3" />
+    <Property Name="DataArritjes" Type="DateTime" Precision="3" />
+    <Property Name="CreditCardID" Type="Int32" />
+    <NavigationProperty Name="KARTELA" Relationship="eStoreModel.FK_POROSIA_KARTELA" FromRole="POROSIA" ToRole="KARTELA" />
+    <NavigationProperty Name="LLOJI_PAGESES" Relationship="eStoreModel.FK_POROSIA_LLOJI_PAGESES" FromRole="POROSIA" ToRole="LLOJI_PAGESES" />
+    <NavigationProperty Name="PERDORUESI" Relationship="eStoreModel.FK_POROSIA_PERDORUESI" FromRole="POROSIA" ToRole="PERDORUESI" />
+    <NavigationProperty Name="STATUSI_PAGESES" Relationship="eStoreModel.FK_POROSIA_STATUSI" FromRole="POROSIA" ToRole="STATUSI_PAGESES" />
+    <NavigationProperty Name="PRODUKTI_IN_POROSIA" Relationship="eStoreModel.FK_PRODUKTI_IN_POROSIA_POROSIA" FromRole="POROSIA" ToRole="PRODUKTI_IN_POROSIA" />
+  </EntityType>
+  <EntityType Name="PRODHUESI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prodhuesi1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Shteti" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUKTIs" Relationship="eStoreModel.FK_PRODUKTI_PRODHUESI" FromRole="PRODHUESI" ToRole="PRODUKTI" />
+  </EntityType>
+  <EntityType Name="PRODUKTI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emertimi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Pershkrimi" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Kodi" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Sasia" Type="Int32" Nullable="false" />
+    <Property Name="CmimiBaze" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TVSH" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="Zbritja" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ProdhuesiID" Type="Int32" />
+    <Property Name="Statusi" Type="Int32" Nullable="false" />
+    <Property Name="Perfunduar" Type="Boolean" />
+    <NavigationProperty Name="PRODHUESI" Relationship="eStoreModel.FK_PRODUKTI_PRODHUESI" FromRole="PRODUKTI" ToRole="PRODHUESI" />
+    <NavigationProperty Name="PRODUKTI_IN_KATEGORIA" Relationship="eStoreModel.FK_PRODUKTI_IN_KATEGORIA_PRODUKTI" FromRole="PRODUKTI" ToRole="PRODUKTI_IN_KATEGORIA" />
+    <NavigationProperty Name="PRODUKTI_IN_MEDIA" Relationship="eStoreModel.FK_PRODUKTI_IN_MEDIA_PRODUKTI" FromRole="PRODUKTI" ToRole="PRODUKTI_IN_MEDIA" />
+    <NavigationProperty Name="PRODUKTI_IN_POROSIA" Relationship="eStoreModel.FK_PRODUKTI_IN_POROSIA_PRODUKTI" FromRole="PRODUKTI" ToRole="PRODUKTI_IN_POROSIA" />
+    <NavigationProperty Name="STOKUs" Relationship="eStoreModel.FK_STOKU_PRODUKTI" FromRole="PRODUKTI" ToRole="STOKU" />
+  </EntityType>
+  <EntityType Name="PRODUKTI_IN_KATEGORIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProduktiID" Type="Int32" Nullable="false" />
+    <Property Name="KategoriaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="KATEGORIA" Relationship="eStoreModel.FK_PRODUKTI_IN_KATEGORIA_KATEGORIA" FromRole="PRODUKTI_IN_KATEGORIA" ToRole="KATEGORIA" />
+    <NavigationProperty Name="PRODUKTI" Relationship="eStoreModel.FK_PRODUKTI_IN_KATEGORIA_PRODUKTI" FromRole="PRODUKTI_IN_KATEGORIA" ToRole="PRODUKTI" />
+  </EntityType>
+  <EntityType Name="PRODUKTI_IN_MEDIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProduktiID" Type="Int32" Nullable="false" />
+    <Property Name="MediaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MEDIAT" Relationship="eStoreModel.FK_PRODUKTI_IN_MEDIA_MEDIA" FromRole="PRODUKTI_IN_MEDIA" ToRole="MEDIAT" />
+    <NavigationProperty Name="PRODUKTI" Relationship="eStoreModel.FK_PRODUKTI_IN_MEDIA_PRODUKTI" FromRole="PRODUKTI_IN_MEDIA" ToRole="PRODUKTI" />
+  </EntityType>
+  <EntityType Name="PRODUKTI_IN_POROSIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="PorosiaID" Type="Int32" Nullable="false" />
+    <Property Name="ProduktiID" Type="Int32" Nullable="false" />
+    <Property Name="Sasia" Type="Int32" Nullable="false" />
+    <Property Name="CmimiPaTvsh" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CmimMeTvsh" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="KTHIMET_POROSIA" Relationship="eStoreModel.FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA" FromRole="PRODUKTI_IN_POROSIA" ToRole="KTHIMET_POROSIA" />
+    <NavigationProperty Name="POROSIA" Relationship="eStoreModel.FK_PRODUKTI_IN_POROSIA_POROSIA" FromRole="PRODUKTI_IN_POROSIA" ToRole="POROSIA" />
+    <NavigationProperty Name="PRODUKTI" Relationship="eStoreModel.FK_PRODUKTI_IN_POROSIA_PRODUKTI" FromRole="PRODUKTI_IN_POROSIA" ToRole="PRODUKTI" />
+  </EntityType>
+  <EntityType Name="SLLIDE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MediaID" Type="Int32" />
+    <Property Name="SllideTitulli" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SllidePershkrimi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SllideDataInsertimit" Type="DateTime" Precision="3" />
+    <Property Name="OrderNr" Type="Int32" />
+    <Property Name="Linku" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MEDIAT" Relationship="eStoreModel.FK_SLLIDE_MEDIA" FromRole="SLLIDE" ToRole="MEDIAT" />
+  </EntityType>
+  <EntityType Name="STATUSI_PAGESES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusiPageses" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="POROSIAs" Relationship="eStoreModel.FK_POROSIA_STATUSI" FromRole="STATUSI_PAGESES" ToRole="POROSIA" />
+  </EntityType>
+  <EntityType Name="STOKU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArtikulliID" Type="Int32" Nullable="false" />
+    <Property Name="Sasia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PRODUKTI" Relationship="eStoreModel.FK_STOKU_PRODUKTI" FromRole="STOKU" ToRole="PRODUKTI" />
+  </EntityType>
+  <EntityType Name="SYSMENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="ActionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Controller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pershkrimi" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HtmlClass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Renditja" Type="Int32" />
+    <Property Name="OpParamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OpParamValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="styleid" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SYSMENU_PARENT" Relationship="eStoreModel.FK_SYSMENU_SYSMENU_PARENT" FromRole="SYSMENU" ToRole="SYSMENU_PARENT" />
+  </EntityType>
+  <EntityType Name="SYSMENU_PARENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pershkrimi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HtmlClass" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Renditja" Type="Int32" Nullable="false" />
+    <Property Name="styleid" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SYSMENUs" Relationship="eStoreModel.FK_SYSMENU_SYSMENU_PARENT" FromRole="SYSMENU_PARENT" ToRole="SYSMENU" />
+  </EntityType>
+  <Association Name="FK_KARTELA_PERDORUESI">
+    <End Type="eStoreModel.PERDORUESI" Role="PERDORUESI" Multiplicity="1" />
+    <End Type="eStoreModel.KARTELA" Role="KARTELA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KARTELA">
+        <PropertyRef Name="PerdoruesiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POROSIA_KARTELA">
+    <End Type="eStoreModel.KARTELA" Role="KARTELA" Multiplicity="0..1" />
+    <End Type="eStoreModel.POROSIA" Role="POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KARTELA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POROSIA">
+        <PropertyRef Name="CreditCardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_KATEGORIA_KATEGORIA">
+    <End Type="eStoreModel.KATEGORIA" Role="KATEGORIA" Multiplicity="1" />
+    <End Type="eStoreModel.PRODUKTI_IN_KATEGORIA" Role="PRODUKTI_IN_KATEGORIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KATEGORIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_KATEGORIA">
+        <PropertyRef Name="KategoriaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KTHIMET_POROSIA_PERDORUESI">
+    <End Type="eStoreModel.PERDORUESI" Role="PERDORUESI" Multiplicity="1" />
+    <End Type="eStoreModel.KTHIMET_POROSIA" Role="KTHIMET_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KTHIMET_POROSIA">
+        <PropertyRef Name="PerdoruesiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA">
+    <End Type="eStoreModel.PRODUKTI_IN_POROSIA" Role="PRODUKTI_IN_POROSIA" Multiplicity="1" />
+    <End Type="eStoreModel.KTHIMET_POROSIA" Role="KTHIMET_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI_IN_POROSIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KTHIMET_POROSIA">
+        <PropertyRef Name="PorosiaProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POROSIA_LLOJI_PAGESES">
+    <End Type="eStoreModel.LLOJI_PAGESES" Role="LLOJI_PAGESES" Multiplicity="1" />
+    <End Type="eStoreModel.POROSIA" Role="POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LLOJI_PAGESES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POROSIA">
+        <PropertyRef Name="LlojiPagesesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_MEDIA_MEDIA">
+    <End Type="eStoreModel.MEDIAT" Role="MEDIAT" Multiplicity="1" />
+    <End Type="eStoreModel.PRODUKTI_IN_MEDIA" Role="PRODUKTI_IN_MEDIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDIAT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_MEDIA">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SLLIDE_MEDIA">
+    <End Type="eStoreModel.MEDIAT" Role="MEDIAT" Multiplicity="0..1" />
+    <End Type="eStoreModel.SLLIDE" Role="SLLIDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDIAT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SLLIDE">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NJOFTIMET_PERDORUESI">
+    <End Type="eStoreModel.PERDORUESI" Role="PERDORUESI" Multiplicity="1" />
+    <End Type="eStoreModel.NJOFTIMET" Role="NJOFTIMET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NJOFTIMET">
+        <PropertyRef Name="FromUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NJOFTIMET_PERDORUESI1">
+    <End Type="eStoreModel.PERDORUESI" Role="PERDORUESI" Multiplicity="0..1" />
+    <End Type="eStoreModel.NJOFTIMET" Role="NJOFTIMET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NJOFTIMET">
+        <PropertyRef Name="ToUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POROSIA_PERDORUESI">
+    <End Type="eStoreModel.PERDORUESI" Role="PERDORUESI" Multiplicity="1" />
+    <End Type="eStoreModel.POROSIA" Role="POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POROSIA">
+        <PropertyRef Name="PerdoruesiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POROSIA_STATUSI">
+    <End Type="eStoreModel.STATUSI_PAGESES" Role="STATUSI_PAGESES" Multiplicity="1" />
+    <End Type="eStoreModel.POROSIA" Role="POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATUSI_PAGESES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POROSIA">
+        <PropertyRef Name="StatusiPorosiaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_POROSIA_POROSIA">
+    <End Type="eStoreModel.POROSIA" Role="POROSIA" Multiplicity="1" />
+    <End Type="eStoreModel.PRODUKTI_IN_POROSIA" Role="PRODUKTI_IN_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POROSIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_POROSIA">
+        <PropertyRef Name="PorosiaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_PRODHUESI">
+    <End Type="eStoreModel.PRODHUESI" Role="PRODHUESI" Multiplicity="0..1" />
+    <End Type="eStoreModel.PRODUKTI" Role="PRODUKTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODHUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI">
+        <PropertyRef Name="ProdhuesiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_KATEGORIA_PRODUKTI">
+    <End Type="eStoreModel.PRODUKTI" Role="PRODUKTI" Multiplicity="1" />
+    <End Type="eStoreModel.PRODUKTI_IN_KATEGORIA" Role="PRODUKTI_IN_KATEGORIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_KATEGORIA">
+        <PropertyRef Name="ProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_MEDIA_PRODUKTI">
+    <End Type="eStoreModel.PRODUKTI" Role="PRODUKTI" Multiplicity="1" />
+    <End Type="eStoreModel.PRODUKTI_IN_MEDIA" Role="PRODUKTI_IN_MEDIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_MEDIA">
+        <PropertyRef Name="ProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_POROSIA_PRODUKTI">
+    <End Type="eStoreModel.PRODUKTI" Role="PRODUKTI" Multiplicity="1" />
+    <End Type="eStoreModel.PRODUKTI_IN_POROSIA" Role="PRODUKTI_IN_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_POROSIA">
+        <PropertyRef Name="ProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STOKU_PRODUKTI">
+    <End Type="eStoreModel.PRODUKTI" Role="PRODUKTI" Multiplicity="1" />
+    <End Type="eStoreModel.STOKU" Role="STOKU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="STOKU">
+        <PropertyRef Name="ArtikulliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SYSMENU_SYSMENU_PARENT">
+    <End Type="eStoreModel.SYSMENU_PARENT" Role="SYSMENU_PARENT" Multiplicity="1" />
+    <End Type="eStoreModel.SYSMENU" Role="SYSMENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SYSMENU_PARENT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SYSMENU">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

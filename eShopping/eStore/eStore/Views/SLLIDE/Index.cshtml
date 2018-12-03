@@ -1,0 +1,94 @@
+﻿@model IEnumerable<DataAccess.SLLIDE>
+
+@{
+    ViewBag.Title = "Lista e sllideve";
+}
+<div class="row margin-bottom-10">
+    <div class="col-md-3">
+        <a href="@Url.Action("Create","SLLIDE")" class="btn btn-primary btn-sm" data-step="1" data-intro="Regjistrimi i slideve" data-position="right" data-scrollTo='tooltip'>Regjistro</a>
+    </div>
+</div>
+<div class="box box-primary">
+    <div class="box-body">
+        <table class="table table-hover table-responsive datatablessearchable">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SllideTitulli)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SllidePershkrimi)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrderNr)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Linku)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img class="img-responsive" style="width:100px; height:auto;" src="~/@item.MEDIAT.Shtegu" alt="@item.MEDIAT.Emri">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SllideTitulli)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SllidePershkrimi)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderNr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Linku)
+                        </td>
+                        <td>
+                            <a href="#/" data-toggle="modal" data-target="#modalDelete" onclick="Delete(@item.ID)" data-keyboard="false" style="float:right;" title="Delete slide" data-step="2" data-intro="#" data-position="right" data-scrollTo='tooltip'><i class="fa fa-trash" style="font-size:1.4em"></i></a>
+                            <a href="@Url.Action("Edit","SLLIDE",new { id= item.ID })" style="float:right;padding-right:5px;" title="Modifiko përdoruesin" data-step="3" data-intro="Shtypet butoni dhe hapet forma per editim te perdoruesit ne sistem" data-position="right" data-scrollTo='tooltip'><i class="fa fa-edit" style="font-size:1.4em"></i></a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+         
+
+        </table>
+
+    </div>
+</div>
+
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="dismissmodalid1" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>     <h4 class="modal-title">Fshij sllide</h4>
+            </div>
+            <div class="modal-body" id="modalDeletecontent">
+                
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+ 
+<script type="text/javascript">
+    function Delete(id) {
+        $("#modalDeletecontent").load('@Url.Action("DeleteSllide", "SLLIDE")', { id: id });
+    }
+</script>

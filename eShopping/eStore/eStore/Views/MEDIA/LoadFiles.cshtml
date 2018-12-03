@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DataAccess.MEDIAT>
+
+@{
+    /**/
+
+    Layout = null;
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="box box-primary" style="border-right:1px solid lightgray;border-left:1px solid lightgray;border-bottom:1px solid lightgray">
+        <img class="profile-user-img img-responsive img-circle" src="~/@item.Shtegu" alt="@item.Emri" style="width:150px;" />
+    </div>
+}

@@ -1,0 +1,12 @@
+G:\eShopping\eStore\DataAccess\bin\Debug\DataAccess.dll.config
+G:\eShopping\eStore\DataAccess\bin\Debug\DataAccess.dll
+G:\eShopping\eStore\DataAccess\bin\Debug\DataAccess.pdb
+G:\eShopping\eStore\DataAccess\bin\Debug\EntityFramework.dll
+G:\eShopping\eStore\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+G:\eShopping\eStore\DataAccess\bin\Debug\EntityFramework.xml
+G:\eShopping\eStore\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+G:\eShopping\eStore\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+G:\eShopping\eStore\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+G:\eShopping\eStore\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+G:\eShopping\eStore\DataAccess\obj\Debug\DataAccess.dll
+G:\eShopping\eStore\DataAccess\obj\Debug\DataAccess.pdb

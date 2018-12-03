@@ -1,0 +1,6 @@
+G:\eShopping\eStore\BusinessLogic\bin\Debug\BusinessLogic.dll
+G:\eShopping\eStore\BusinessLogic\bin\Debug\BusinessLogic.pdb
+G:\eShopping\eStore\BusinessLogic\obj\Debug\BusinessLogic.csprojAssemblyReference.cache
+G:\eShopping\eStore\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+G:\eShopping\eStore\BusinessLogic\obj\Debug\BusinessLogic.dll
+G:\eShopping\eStore\BusinessLogic\obj\Debug\BusinessLogic.pdb

@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eStoreModelStoreContainer" CdmEntityContainer="eStoreEntities1">
+    <EntitySetMapping Name="CULTURECODEs">
+      <EntityTypeMapping TypeName="eStoreModel.CULTURECODE">
+        <MappingFragment StoreEntitySet="CULTURECODE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CultureCode1" ColumnName="CultureCode" />
+          <ScalarProperty Name="CultureCodeCountry" ColumnName="CultureCodeCountry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GJUHAs">
+      <EntityTypeMapping TypeName="eStoreModel.GJUHA">
+        <MappingFragment StoreEntitySet="GJUHA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CultureCodeID" ColumnName="CultureCodeID" />
+          <ScalarProperty Name="GjuhaEmerimi" ColumnName="GjuhaEmerimi" />
+          <ScalarProperty Name="Aktiv" ColumnName="Aktiv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KARTELAs">
+      <EntityTypeMapping TypeName="eStoreModel.KARTELA">
+        <MappingFragment StoreEntitySet="KARTELA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NumriXhirollogarise" ColumnName="NumriXhirollogarise" />
+          <ScalarProperty Name="PerdoruesiID" ColumnName="PerdoruesiID" />
+          <ScalarProperty Name="Kodi" ColumnName="Kodi" />
+          <ScalarProperty Name="DataSkadimit" ColumnName="DataSkadimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KATEGORIAs">
+      <EntityTypeMapping TypeName="eStoreModel.KATEGORIA">
+        <MappingFragment StoreEntitySet="KATEGORIA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GjuhaID" ColumnName="GjuhaID" />
+          <ScalarProperty Name="Emertimi" ColumnName="Emertimi" />
+          <ScalarProperty Name="Pershkrimi" ColumnName="Pershkrimi" />
+          <ScalarProperty Name="Aktiv" ColumnName="Aktiv" />
+          <ScalarProperty Name="PrindiID" ColumnName="PrindiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KONTAKTIs">
+      <EntityTypeMapping TypeName="eStoreModel.KONTAKTI">
+        <MappingFragment StoreEntitySet="KONTAKTI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="KontaktiPershkrimi" ColumnName="KontaktiPershkrimi" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Telefoni" ColumnName="Telefoni" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+          <ScalarProperty Name="GPS" ColumnName="GPS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KTHIMET_POROSIA">
+      <EntityTypeMapping TypeName="eStoreModel.KTHIMET_POROSIA">
+        <MappingFragment StoreEntitySet="KTHIMET_POROSIA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PorosiaProduktiID" ColumnName="PorosiaProduktiID" />
+          <ScalarProperty Name="PerdoruesiID" ColumnName="PerdoruesiID" />
+          <ScalarProperty Name="DataKthimit" ColumnName="DataKthimit" />
+          <ScalarProperty Name="Arsyeja" ColumnName="Arsyeja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LLOJI_PAGESES">
+      <EntityTypeMapping TypeName="eStoreModel.LLOJI_PAGESES">
+        <MappingFragment StoreEntitySet="LLOJI_PAGESES">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Emertimi" ColumnName="Emertimi" />
+          <ScalarProperty Name="GjuhaID" ColumnName="GjuhaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGs">
+      <EntityTypeMapping TypeName="eStoreModel.LOG">
+        <MappingFragment StoreEntitySet="LOG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+          <ScalarProperty Name="OriginalValue" ColumnName="OriginalValue" />
+          <ScalarProperty Name="Created_by" ColumnName="Created_by" />
+          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_ENTRY">
+      <EntityTypeMapping TypeName="eStoreModel.LOG_ENTRY">
+        <MappingFragment StoreEntitySet="LOG_ENTRY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PerdoruesiID" ColumnName="PerdoruesiID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_USERACTIVITY">
+      <EntityTypeMapping TypeName="eStoreModel.LOG_USERACTIVITY">
+        <MappingFragment StoreEntitySet="LOG_USERACTIVITY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PerdoruesiID" ColumnName="PerdoruesiID" />
+          <ScalarProperty Name="Activity" ColumnName="Activity" />
+          <ScalarProperty Name="HttpMethod" ColumnName="HttpMethod" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEDIA">
+      <EntityTypeMapping TypeName="eStoreModel.Medium">
+        <MappingFragment StoreEntitySet="MEDIA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Emri" ColumnName="Emri" />
+          <ScalarProperty Name="Extensioni" ColumnName="Extensioni" />
+          <ScalarProperty Name="Pershkrimi" ColumnName="Pershkrimi" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="Shtegu" ColumnName="Shtegu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NJOFTIMETs">
+      <EntityTypeMapping TypeName="eStoreModel.NJOFTIMET">
+        <MappingFragment StoreEntitySet="NJOFTIMET">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
+          <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
+          <ScalarProperty Name="FromU" ColumnName="FromU" />
+          <ScalarProperty Name="ToU" ColumnName="ToU" />
+          <ScalarProperty Name="ToUser" ColumnName="ToUser" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERDORUESIs">
+      <EntityTypeMapping TypeName="eStoreModel.PERDORUESI">
+        <MappingFragment StoreEntitySet="PERDORUESI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Emri" ColumnName="Emri" />
+          <ScalarProperty Name="Mbiemri" ColumnName="Mbiemri" />
+          <ScalarProperty Name="Datelindja" ColumnName="Datelindja" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PerdoruesiFillimi" ColumnName="PerdoruesiFillimi" />
+          <ScalarProperty Name="PerdoruesiMbarimi" ColumnName="PerdoruesiMbarimi" />
+          <ScalarProperty Name="Aktiv" ColumnName="Aktiv" />
+          <ScalarProperty Name="Telefoni" ColumnName="Telefoni" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="KodiPostar" ColumnName="KodiPostar" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="GjuhaID" ColumnName="GjuhaID" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="Statusi" ColumnName="Statusi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERDORUESI_GRUPI">
+      <EntityTypeMapping TypeName="eStoreModel.PERDORUESI_GRUPI">
+        <MappingFragment StoreEntitySet="PERDORUESI_GRUPI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GrupiPershkrimi" ColumnName="GrupiPershkrimi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POROSIAs">
+      <EntityTypeMapping TypeName="eStoreModel.POROSIA">
+        <MappingFragment StoreEntitySet="POROSIA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LlojiPagesesID" ColumnName="LlojiPagesesID" />
+          <ScalarProperty Name="StatusiPorosiaID" ColumnName="StatusiPorosiaID" />
+          <ScalarProperty Name="DataPorosise" ColumnName="DataPorosise" />
+          <ScalarProperty Name="DataPageses" ColumnName="DataPageses" />
+          <ScalarProperty Name="DataArritjes" ColumnName="DataArritjes" />
+          <ScalarProperty Name="CreditCardID" ColumnName="CreditCardID" />
+          <ScalarProperty Name="PerdoruesiID" ColumnName="PerdoruesiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODHUESIs">
+      <EntityTypeMapping TypeName="eStoreModel.PRODHUESI">
+        <MappingFragment StoreEntitySet="PRODHUESI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Prodhuesi1" ColumnName="Prodhuesi" />
+          <ScalarProperty Name="Shteti" ColumnName="Shteti" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUKTIs">
+      <EntityTypeMapping TypeName="eStoreModel.PRODUKTI">
+        <MappingFragment StoreEntitySet="PRODUKTI">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Emertimi" ColumnName="Emertimi" />
+          <ScalarProperty Name="Pershkrimi" ColumnName="Pershkrimi" />
+          <ScalarProperty Name="GjuhaID" ColumnName="GjuhaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUKTI_DETAJET">
+      <EntityTypeMapping TypeName="eStoreModel.PRODUKTI_DETAJET">
+        <MappingFragment StoreEntitySet="PRODUKTI_DETAJET">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProduktiID" ColumnName="ProduktiID" />
+          <ScalarProperty Name="Kodi" ColumnName="Kodi" />
+          <ScalarProperty Name="CmimiBaze" ColumnName="CmimiBaze" />
+          <ScalarProperty Name="TVSH" ColumnName="TVSH" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Zbritja" ColumnName="Zbritja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUKTI_IN_KATEGORIA">
+      <EntityTypeMapping TypeName="eStoreModel.PRODUKTI_IN_KATEGORIA">
+        <MappingFragment StoreEntitySet="PRODUKTI_IN_KATEGORIA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProduktiID" ColumnName="ProduktiID" />
+          <ScalarProperty Name="KategoriaID" ColumnName="KategoriaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUKTI_IN_MEDIA">
+      <EntityTypeMapping TypeName="eStoreModel.PRODUKTI_IN_MEDIA">
+        <MappingFragment StoreEntitySet="PRODUKTI_IN_MEDIA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProduktiID" ColumnName="ProduktiID" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUKTI_IN_POROSIA">
+      <EntityTypeMapping TypeName="eStoreModel.PRODUKTI_IN_POROSIA">
+        <MappingFragment StoreEntitySet="PRODUKTI_IN_POROSIA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PorosiaID" ColumnName="PorosiaID" />
+          <ScalarProperty Name="ProduktiID" ColumnName="ProduktiID" />
+          <ScalarProperty Name="Sasia" ColumnName="Sasia" />
+          <ScalarProperty Name="CmimiPaTvsh" ColumnName="CmimiPaTvsh" />
+          <ScalarProperty Name="CmimMeTvsh" ColumnName="CmimMeTvsh" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SLLIDEs">
+      <EntityTypeMapping TypeName="eStoreModel.SLLIDE">
+        <MappingFragment StoreEntitySet="SLLIDE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+          <ScalarProperty Name="SllideTitulli" ColumnName="SllideTitulli" />
+          <ScalarProperty Name="SllidePershkrimi" ColumnName="SllidePershkrimi" />
+          <ScalarProperty Name="SllideDataInsertimit" ColumnName="SllideDataInsertimit" />
+          <ScalarProperty Name="OrderNr" ColumnName="OrderNr" />
+          <ScalarProperty Name="Linku" ColumnName="Linku" />
+          <ScalarProperty Name="GjuhaID" ColumnName="GjuhaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATUSI_PAGESES">
+      <EntityTypeMapping TypeName="eStoreModel.STATUSI_PAGESES">
+        <MappingFragment StoreEntitySet="STATUSI_PAGESES">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusiPageses" ColumnName="StatusiPageses" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STOKUs">
+      <EntityTypeMapping TypeName="eStoreModel.STOKU">
+        <MappingFragment StoreEntitySet="STOKU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ArtikulliID" ColumnName="ArtikulliID" />
+          <ScalarProperty Name="Sasia" ColumnName="Sasia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="eStoreModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYSMENUs">
+      <EntityTypeMapping TypeName="eStoreModel.SYSMENU">
+        <MappingFragment StoreEntitySet="SYSMENU">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="Pershkrimi" ColumnName="Pershkrimi" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="HtmlClass" ColumnName="HtmlClass" />
+          <ScalarProperty Name="Renditja" ColumnName="Renditja" />
+          <ScalarProperty Name="OpParamName" ColumnName="OpParamName" />
+          <ScalarProperty Name="OpParamValue" ColumnName="OpParamValue" />
+          <ScalarProperty Name="styleid" ColumnName="styleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYSMENU_PARENT">
+      <EntityTypeMapping TypeName="eStoreModel.SYSMENU_PARENT">
+        <MappingFragment StoreEntitySet="SYSMENU_PARENT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Pershkrimi" ColumnName="Pershkrimi" />
+          <ScalarProperty Name="HtmlClass" ColumnName="HtmlClass" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Renditja" ColumnName="Renditja" />
+          <ScalarProperty Name="styleid" ColumnName="styleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

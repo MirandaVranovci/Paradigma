@@ -1,0 +1,31 @@
+﻿@model  IEnumerable<eStore.Models.NotificationsModel>
+@using eStore.Models;
+@{
+    Layout = null;
+}
+
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="notif">
+    <i class="fa fa-bell-o" style="font-size:1.3em"></i>
+    <span class="label label-danger" style="font-size:11px">@Model.Count()</span>
+</a>
+<ul class="dropdown-menu">
+    <li class="header">You have @(Model.Count()) notifications</li>
+    <li>
+        <!-- Inner Menu: contains the notifications -->
+        <ul class="menu">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <!-- start notification -->
+                    <a href="#" title="@item.Message">
+                        <i class="fa fa-users text-aqua"></i> @item.Message (@item.Date) @item.From
+                    </a>
+                </li>
+            }
+
+            <!-- end notification -->
+        </ul>
+    </li>
+    <li class="footer"><a href="#">Shiko te gjitha</a></li>
+</ul>
+

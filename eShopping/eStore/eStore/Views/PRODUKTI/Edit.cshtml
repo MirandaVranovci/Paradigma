@@ -1,0 +1,187 @@
+﻿@model DataAccess.PRODUKTI
+
+@{
+    ViewBag.Title = "Modifikimi i produktit";
+
+    // parametrat per formimin e butonit per kthim prapa
+    ViewBag.hasReturn = true;
+    ViewBag.action = "Index";
+    ViewBag.controller = "PRODUKTI";
+    ViewBag.paramName = null;
+}
+<link rel="stylesheet" href="~/Content/theme/jsteps/jquery.steps.css">
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ID)
+}
+
+<form id="produktiform">
+    <h3>Detajet e produktit</h3>
+    <fieldset>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Emertimi, "Emërtimi", htmlAttributes: new { @class = "control-label required" })
+                    @Html.EditorFor(model => model.Emertimi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Emertimi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Kodi, htmlAttributes: new { @class = "control-label required" })
+                    @Html.EditorFor(model => model.Kodi, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Kodi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sasia, htmlAttributes: new { @class = "control-label required" })
+                    @Html.EditorFor(model => model.Sasia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sasia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CmimiBaze, "Cmimi Bazë", htmlAttributes: new { @class = "control-label required" })
+                    @Html.EditorFor(model => model.CmimiBaze, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CmimiBaze, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TVSH, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.TVSH, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Zbritja, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Zbritja, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ProdhuesiID, "Prodhuesi", new { @class = "col-md-2 control-label required" })
+                    @Html.DropDownListFor(m => m.ProdhuesiID, ViewBag.ProdhuesiID as SelectList, "Zgjedhe", htmlAttributes: new { @class = "form-control select2" })
+                    @Html.ValidationMessageFor(m => m.ProdhuesiID, "", new { @class = "text-danger", @id = "prodhuesimsg" })
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div>
+                    @Html.LabelFor(model => model.Pershkrimi, "Përshkrimi", htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div>
+                    @Html.TextAreaFor(model => model.Pershkrimi, 6, 8, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <h3>Regjistrimi në kategori</h3>
+    <fieldset>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div id="listakategorive">
+
+                </div>
+
+                <div id="artikullinekategori">
+
+                </div>
+            </div>
+        </div>
+
+
+    </fieldset>
+
+    <h3>Insertimi i fotografive</h3>
+    <fieldset>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="listamediave">
+                </div>
+                <button id="btnPerfundo" class="hidden" type="button">Përfundo</button>
+            </div>
+            <div class="col-md-6">
+                <div id="mediatneartikujt">
+
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="modal fade bs-example-modal-sm" id="DeleteChosenKategoriaModal" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="dismissmodalid1" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">A jeni i sigurt qe do te fshini kategorine nga produkti?</h4>
+            </div>
+            <div class="modal-body" id="DeleteChosenKategoriaContent">
+
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade bs-example-modal-sm" id="DeleteChosenMediaModal" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="dismissmodalid2" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">A jeni i sigurt qe do te fshini median nga produkti?</h4>
+            </div>
+            <div class="modal-body" id="DeleteChosenMediaContent">
+
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        function fnNotify(mesazhi, tipi) {
+            //$.notify(mesazhi, tipi);
+            $("#modalNotify").modal();
+
+            $("#notifyTitle").text(mesazhi);
+
+            if (tipi == "success") {
+                $("#modalNotify").removeClass("modal-default").removeClass("modal-danger").removeClass("modal-info").addClass("modal-success");
+                $("#notifyicon").removeClass("glyphicon-exclamation-sign").addClass("glyphicon-ok");
+            }
+
+            if (tipi == "info") {
+                $("#modalNotify").removeClass("modal-default").removeClass("modal-danger").removeClass("modal-success").addClass("modal-info");
+                $("#notifyicon").removeClass("glyphicon-ok").addClass("glyphicon-exclamation-sign");
+            }
+
+            if (tipi == "error") {
+                $("#modalNotify").removeClass("modal-default").removeClass("modal-info").removeClass("modal-success").addClass("modal-danger");
+                $("#notifyicon").removeClass("glyphicon-ok").addClass("glyphicon-exclamation-sign");
+            }
+
+
+            setTimeout(function () {
+                $("#mbyllnotify").trigger("click");
+            }, 2000);
+        }
+    </script>
+
+    <script type="text/javascript" src="~/Content/theme/jsteps/jquery.steps.js"></script>
+    <script type="text/javascript" src="~/Scripts/produkti/create.js"></script>
+} 

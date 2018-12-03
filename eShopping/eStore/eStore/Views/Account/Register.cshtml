@@ -1,0 +1,135 @@
+﻿@model eStore.Models.RegisterViewModel
+@using eStore.Models;
+@{
+    ViewBag.Title = "Regjistrimi i Përdoruesve";
+
+    // parametrat per formimin e butonit per kthim prapa
+    ViewBag.hasReturn = true;
+    ViewBag.action = "Index";
+    ViewBag.controller = "USER";
+    ViewBag.paramName = null;
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            Të dhënat personale
+
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group" data-step="1" data-intro="Shkruaj emrin e perdoruesit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Emri, new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.Emri, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Emri, null, new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" data-step="2" data-intro="Shkruaj mbiemrin e perdoruesit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Mbiemri, new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.Mbiemri, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Mbiemri, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" data-step="3" data-intro="Shkruaj ditlindjen e perdoruesit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Ditelindja, new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.Ditelindja, new { @class = "form-control datepicker",@placeholder="dd/MM/yyyy" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" data-step="4" data-intro="Shkruaj adresen" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Adresa, new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.Adresa, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Adresa, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" data-step="5" data-intro="Shkruaj numrin e telefonit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Telefoni, new { @class = "col-md-2 control-label" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.Telefoni, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" data-step="6" data-intro="Shkruaj emailin e perdoruesit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+
+                            Të dhënat për çasje
+
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group" data-step="7" data-intro="Zgjedh rolin e perdoruesit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Roles, "Roli", new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(m=>m.Roles, null, "Zgjedhe", htmlAttributes: new { @class = "form-control select2" })
+                                    @Html.ValidationMessageFor(m => m.Roles, "",new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group" data-step="9" data-intro="Shkruaj Username-in e perdoruesit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.UserName, "Username", new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group" data-step="10" data-intro="Shkruaj fjalkalimin e perdoruesit" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.Password, "Fjalekalimi", new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group" data-step="11" data-intro="Shkruaj perseri fjalkalimin" data-position="right" data-scrollTo='tooltip'>
+                                @Html.LabelFor(m => m.ConfirmPassword, "Konfirmo Fjalekalimin", new { @class = "col-md-2 control-label required" })
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <button type="submit" title="Ruaj" class="btn btn-primary btn-sm" style="float:left" data-step="17" data-intro="msg" data-position="right" data-scrollTo='tooltip'>
+                <i class="fa fa-check" style="font-size: 1.3em"></i>&nbsp; Ruaj
+            </button>
+
+
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DataAccess.KATEGORIA>
+
+@{
+    Layout = null;
+}
+
+<div class="table table-responsive box box-primary" style="box-shadow:3px 3px 3px lightgray;border-right:1px solid lightgray;border-left:1px solid lightgray;border-bottom:1px solid lightgray">
+    <div class="box-header with-border">
+        Lista e Kategorive aktive
+       
+    </div>
+    <div class="box-body">
+        <table class="table table-hover table-condensed table-striped table-responsive searchkategoriaaktive">
+            <thead>
+                <tr>
+                    <th>
+                        Kategoria
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Emertimi)
+                        </td>
+                        <td>
+                            <button id="btnshtokategorine_@item.ID" type="button" data-kategoriaid="@item.ID" onclick="shtokategorine(this)" class="btn btn-primary btn-xs btnchoosearticle"><i class="glyphicon glyphicon-plus"></i>&nbsp;Shto</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}
+
+<script type="text/javascript">
+    $('.searchkategoriaaktive').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false
+    });
+</script>

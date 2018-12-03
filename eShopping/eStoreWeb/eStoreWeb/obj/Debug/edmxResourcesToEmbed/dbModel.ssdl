@@ -1,0 +1,710 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CULTURECODE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CultureCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CultureCodeCountry" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="GJUHA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CultureCodeID" Type="int" Nullable="false" />
+    <Property Name="GjuhaEmerimi" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Aktiv" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KARTELA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumriXhirollogarise" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="PerdoruesiID" Type="int" Nullable="false" />
+    <Property Name="Kodi" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="DataSkadimit" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KATEGORIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GjuhaID" Type="int" Nullable="false" />
+    <Property Name="Emertimi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pershkrimi" Type="nvarchar" MaxLength="100" />
+    <Property Name="Aktiv" Type="bit" Nullable="false" />
+    <Property Name="PrindiID" Type="int" />
+  </EntityType>
+  <EntityType Name="KONTAKTI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KontaktiPershkrimi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Adresa" Type="nvarchar" MaxLength="100" />
+    <Property Name="Telefoni" Type="char" MaxLength="12" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="MediaID" Type="int" />
+    <Property Name="GPS" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="KTHIMET_POROSIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PorosiaProduktiID" Type="int" Nullable="false" />
+    <Property Name="PerdoruesiID" Type="int" Nullable="false" />
+    <Property Name="DataKthimit" Type="datetime" Nullable="false" />
+    <Property Name="Arsyeja" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="LLOJI_PAGESES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emertimi" Type="varchar" MaxLength="20" />
+    <Property Name="GjuhaID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EventType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TableName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="RecordID" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="ColumnName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="NewValue" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="OriginalValue" Type="nvarchar" MaxLength="500" />
+    <Property Name="Created_by" Type="int" Nullable="false" />
+    <Property Name="Created_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOG_ENTRY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PerdoruesiID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="EntryDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOG_USERACTIVITY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PerdoruesiID" Type="int" Nullable="false" />
+    <Property Name="Activity" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="HttpMethod" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="EntryDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEDIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emri" Type="uniqueidentifier" />
+    <Property Name="Extensioni" Type="char" MaxLength="5" />
+    <Property Name="Pershkrimi" Type="varchar" MaxLength="200" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Createdby" Type="int" Nullable="false" />
+    <Property Name="Shtegu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NJOFTIMET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FromUserID" Type="int" Nullable="false" />
+    <Property Name="ToUserID" Type="int" />
+    <Property Name="FromU" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ToU" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ToUser" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Data" Type="datetime" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PERDORUESI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Emri" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Mbiemri" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Datelindja" Type="datetime" />
+    <Property Name="Password" Type="varbinary(max)" />
+    <Property Name="PerdoruesiFillimi" Type="datetime" />
+    <Property Name="PerdoruesiMbarimi" Type="datetime" />
+    <Property Name="Aktiv" Type="bit" Nullable="false" />
+    <Property Name="Telefoni" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="KodiPostar" Type="char" MaxLength="5" />
+    <Property Name="Adresa" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="GjuhaID" Type="int" Nullable="false" />
+    <Property Name="Roles" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="Statusi" Type="bit" />
+  </EntityType>
+  <EntityType Name="PERDORUESI_GRUPI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GrupiPershkrimi" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="POROSIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LlojiPagesesID" Type="int" Nullable="false" />
+    <Property Name="StatusiPorosiaID" Type="int" Nullable="false" />
+    <Property Name="DataPorosise" Type="datetime" Nullable="false" />
+    <Property Name="DataPageses" Type="datetime" />
+    <Property Name="DataArritjes" Type="datetime" />
+    <Property Name="CreditCardID" Type="int" />
+    <Property Name="PerdoruesiID" Type="int" />
+  </EntityType>
+  <EntityType Name="PRODHUESI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prodhuesi" Type="nvarchar" MaxLength="100" />
+    <Property Name="Shteti" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PRODUKTI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emertimi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Pershkrimi" Type="nvarchar" MaxLength="300" />
+    <Property Name="GjuhaID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUKTI_DETAJET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProduktiID" Type="int" Nullable="false" />
+    <Property Name="Kodi" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="CmimiBaze" Type="money" Nullable="false" />
+    <Property Name="TVSH" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="Zbritja" Type="decimal" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="PRODUKTI_IN_KATEGORIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProduktiID" Type="int" Nullable="false" />
+    <Property Name="KategoriaID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUKTI_IN_MEDIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProduktiID" Type="int" Nullable="false" />
+    <Property Name="MediaID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUKTI_IN_POROSIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PorosiaID" Type="int" Nullable="false" />
+    <Property Name="ProduktiID" Type="int" Nullable="false" />
+    <Property Name="Sasia" Type="int" Nullable="false" />
+    <Property Name="CmimiPaTvsh" Type="money" Nullable="false" />
+    <Property Name="CmimMeTvsh" Type="money" Nullable="false" />
+    <Property Name="Created" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SLLIDE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MediaID" Type="int" />
+    <Property Name="SllideTitulli" Type="nvarchar" MaxLength="50" />
+    <Property Name="SllidePershkrimi" Type="nvarchar" MaxLength="200" />
+    <Property Name="SllideDataInsertimit" Type="datetime" />
+    <Property Name="OrderNr" Type="int" />
+    <Property Name="Linku" Type="varchar" MaxLength="100" />
+    <Property Name="GjuhaID" Type="int" />
+  </EntityType>
+  <EntityType Name="STATUSI_PAGESES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusiPageses" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STOKU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtikulliID" Type="int" Nullable="false" />
+    <Property Name="Sasia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="SYSMENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="ActionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Controller" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pershkrimi" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="HtmlClass" Type="nvarchar" MaxLength="20" />
+    <Property Name="Renditja" Type="int" />
+    <Property Name="OpParamName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OpParamValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="styleid" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="SYSMENU_PARENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pershkrimi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HtmlClass" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="Renditja" Type="int" Nullable="false" />
+    <Property Name="styleid" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK_GJUHA_CULTURECODE">
+    <End Role="CULTURECODE" Type="Self.CULTURECODE" Multiplicity="1" />
+    <End Role="GJUHA" Type="Self.GJUHA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CULTURECODE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GJUHA">
+        <PropertyRef Name="CultureCodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KARTELA_PERDORUESI">
+    <End Role="PERDORUESI" Type="Self.PERDORUESI" Multiplicity="1" />
+    <End Role="KARTELA" Type="Self.KARTELA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KARTELA">
+        <PropertyRef Name="PerdoruesiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KATEGORIA_GJUHA">
+    <End Role="GJUHA" Type="Self.GJUHA" Multiplicity="1" />
+    <End Role="KATEGORIA" Type="Self.KATEGORIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GJUHA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KATEGORIA">
+        <PropertyRef Name="GjuhaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KONTAKTI_MEDIA">
+    <End Role="MEDIA" Type="Self.MEDIA" Multiplicity="0..1" />
+    <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KONTAKTI">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KTHIMET_POROSIA_PERDORUESI">
+    <End Role="PERDORUESI" Type="Self.PERDORUESI" Multiplicity="1" />
+    <End Role="KTHIMET_POROSIA" Type="Self.KTHIMET_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KTHIMET_POROSIA">
+        <PropertyRef Name="PerdoruesiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA">
+    <End Role="PRODUKTI_IN_POROSIA" Type="Self.PRODUKTI_IN_POROSIA" Multiplicity="1" />
+    <End Role="KTHIMET_POROSIA" Type="Self.KTHIMET_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI_IN_POROSIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KTHIMET_POROSIA">
+        <PropertyRef Name="PorosiaProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LLOJI_PAGESES_GJUHA">
+    <End Role="GJUHA" Type="Self.GJUHA" Multiplicity="1" />
+    <End Role="LLOJI_PAGESES" Type="Self.LLOJI_PAGESES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GJUHA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LLOJI_PAGESES">
+        <PropertyRef Name="GjuhaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NJOFTIMET_PERDORUESI">
+    <End Role="PERDORUESI" Type="Self.PERDORUESI" Multiplicity="1" />
+    <End Role="NJOFTIMET" Type="Self.NJOFTIMET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NJOFTIMET">
+        <PropertyRef Name="FromUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NJOFTIMET_PERDORUESI1">
+    <End Role="PERDORUESI" Type="Self.PERDORUESI" Multiplicity="0..1" />
+    <End Role="NJOFTIMET" Type="Self.NJOFTIMET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUESI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NJOFTIMET">
+        <PropertyRef Name="ToUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERDORUESI_GJUHA">
+    <End Role="GJUHA" Type="Self.GJUHA" Multiplicity="1" />
+    <End Role="PERDORUESI" Type="Self.PERDORUESI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GJUHA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PERDORUESI">
+        <PropertyRef Name="GjuhaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POROSIA_KARTELA">
+    <End Role="KARTELA" Type="Self.KARTELA" Multiplicity="0..1" />
+    <End Role="POROSIA" Type="Self.POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KARTELA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POROSIA">
+        <PropertyRef Name="CreditCardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POROSIA_LLOJI_PAGESES">
+    <End Role="LLOJI_PAGESES" Type="Self.LLOJI_PAGESES" Multiplicity="1" />
+    <End Role="POROSIA" Type="Self.POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LLOJI_PAGESES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POROSIA">
+        <PropertyRef Name="LlojiPagesesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POROSIA_STATUSI">
+    <End Role="STATUSI_PAGESES" Type="Self.STATUSI_PAGESES" Multiplicity="1" />
+    <End Role="POROSIA" Type="Self.POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATUSI_PAGESES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POROSIA">
+        <PropertyRef Name="StatusiPorosiaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_DETAJET_PRODUKTI">
+    <End Role="PRODUKTI" Type="Self.PRODUKTI" Multiplicity="1" />
+    <End Role="PRODUKTI_DETAJET" Type="Self.PRODUKTI_DETAJET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_DETAJET">
+        <PropertyRef Name="ProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_GJUHA">
+    <End Role="GJUHA" Type="Self.GJUHA" Multiplicity="1" />
+    <End Role="PRODUKTI" Type="Self.PRODUKTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GJUHA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI">
+        <PropertyRef Name="GjuhaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_KATEGORIA_KATEGORIA">
+    <End Role="KATEGORIA" Type="Self.KATEGORIA" Multiplicity="1" />
+    <End Role="PRODUKTI_IN_KATEGORIA" Type="Self.PRODUKTI_IN_KATEGORIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KATEGORIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_KATEGORIA">
+        <PropertyRef Name="KategoriaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_KATEGORIA_PRODUKTI">
+    <End Role="PRODUKTI" Type="Self.PRODUKTI" Multiplicity="1" />
+    <End Role="PRODUKTI_IN_KATEGORIA" Type="Self.PRODUKTI_IN_KATEGORIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_KATEGORIA">
+        <PropertyRef Name="ProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_MEDIA_MEDIA">
+    <End Role="MEDIA" Type="Self.MEDIA" Multiplicity="1" />
+    <End Role="PRODUKTI_IN_MEDIA" Type="Self.PRODUKTI_IN_MEDIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_MEDIA">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_MEDIA_PRODUKTI">
+    <End Role="PRODUKTI" Type="Self.PRODUKTI" Multiplicity="1" />
+    <End Role="PRODUKTI_IN_MEDIA" Type="Self.PRODUKTI_IN_MEDIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_MEDIA">
+        <PropertyRef Name="ProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_POROSIA_POROSIA">
+    <End Role="POROSIA" Type="Self.POROSIA" Multiplicity="1" />
+    <End Role="PRODUKTI_IN_POROSIA" Type="Self.PRODUKTI_IN_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POROSIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_POROSIA">
+        <PropertyRef Name="PorosiaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUKTI_IN_POROSIA_PRODUKTI">
+    <End Role="PRODUKTI" Type="Self.PRODUKTI" Multiplicity="1" />
+    <End Role="PRODUKTI_IN_POROSIA" Type="Self.PRODUKTI_IN_POROSIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PRODUKTI_IN_POROSIA">
+        <PropertyRef Name="ProduktiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SLLIDE_MEDIA">
+    <End Role="MEDIA" Type="Self.MEDIA" Multiplicity="0..1" />
+    <End Role="SLLIDE" Type="Self.SLLIDE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEDIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SLLIDE">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_STOKU_PRODUKTI">
+    <End Role="PRODUKTI" Type="Self.PRODUKTI" Multiplicity="1" />
+    <End Role="STOKU" Type="Self.STOKU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKTI">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="STOKU">
+        <PropertyRef Name="ArtikulliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SYSMENU_SYSMENU_PARENT">
+    <End Role="SYSMENU_PARENT" Type="Self.SYSMENU_PARENT" Multiplicity="1" />
+    <End Role="SYSMENU" Type="Self.SYSMENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SYSMENU_PARENT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SYSMENU">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eStoreModelStoreContainer">
+    <EntitySet Name="CULTURECODE" EntityType="Self.CULTURECODE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GJUHA" EntityType="Self.GJUHA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KARTELA" EntityType="Self.KARTELA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KATEGORIA" EntityType="Self.KATEGORIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KONTAKTI" EntityType="Self.KONTAKTI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KTHIMET_POROSIA" EntityType="Self.KTHIMET_POROSIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LLOJI_PAGESES" EntityType="Self.LLOJI_PAGESES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOG" EntityType="Self.LOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOG_ENTRY" EntityType="Self.LOG_ENTRY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOG_USERACTIVITY" EntityType="Self.LOG_USERACTIVITY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MEDIA" EntityType="Self.MEDIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NJOFTIMET" EntityType="Self.NJOFTIMET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERDORUESI" EntityType="Self.PERDORUESI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERDORUESI_GRUPI" EntityType="Self.PERDORUESI_GRUPI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="POROSIA" EntityType="Self.POROSIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODHUESI" EntityType="Self.PRODHUESI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUKTI" EntityType="Self.PRODUKTI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUKTI_DETAJET" EntityType="Self.PRODUKTI_DETAJET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUKTI_IN_KATEGORIA" EntityType="Self.PRODUKTI_IN_KATEGORIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUKTI_IN_MEDIA" EntityType="Self.PRODUKTI_IN_MEDIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUKTI_IN_POROSIA" EntityType="Self.PRODUKTI_IN_POROSIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SLLIDE" EntityType="Self.SLLIDE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STATUSI_PAGESES" EntityType="Self.STATUSI_PAGESES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STOKU" EntityType="Self.STOKU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYSMENU" EntityType="Self.SYSMENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SYSMENU_PARENT" EntityType="Self.SYSMENU_PARENT" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GJUHA_CULTURECODE" Association="Self.FK_GJUHA_CULTURECODE">
+      <End Role="CULTURECODE" EntitySet="CULTURECODE" />
+      <End Role="GJUHA" EntitySet="GJUHA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KARTELA_PERDORUESI" Association="Self.FK_KARTELA_PERDORUESI">
+      <End Role="PERDORUESI" EntitySet="PERDORUESI" />
+      <End Role="KARTELA" EntitySet="KARTELA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KATEGORIA_GJUHA" Association="Self.FK_KATEGORIA_GJUHA">
+      <End Role="GJUHA" EntitySet="GJUHA" />
+      <End Role="KATEGORIA" EntitySet="KATEGORIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KONTAKTI_MEDIA" Association="Self.FK_KONTAKTI_MEDIA">
+      <End Role="MEDIA" EntitySet="MEDIA" />
+      <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KTHIMET_POROSIA_PERDORUESI" Association="Self.FK_KTHIMET_POROSIA_PERDORUESI">
+      <End Role="PERDORUESI" EntitySet="PERDORUESI" />
+      <End Role="KTHIMET_POROSIA" EntitySet="KTHIMET_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA" Association="Self.FK_KTHIMET_POROSIA_PRODUKTI_IN_POROSIA">
+      <End Role="PRODUKTI_IN_POROSIA" EntitySet="PRODUKTI_IN_POROSIA" />
+      <End Role="KTHIMET_POROSIA" EntitySet="KTHIMET_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LLOJI_PAGESES_GJUHA" Association="Self.FK_LLOJI_PAGESES_GJUHA">
+      <End Role="GJUHA" EntitySet="GJUHA" />
+      <End Role="LLOJI_PAGESES" EntitySet="LLOJI_PAGESES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NJOFTIMET_PERDORUESI" Association="Self.FK_NJOFTIMET_PERDORUESI">
+      <End Role="PERDORUESI" EntitySet="PERDORUESI" />
+      <End Role="NJOFTIMET" EntitySet="NJOFTIMET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NJOFTIMET_PERDORUESI1" Association="Self.FK_NJOFTIMET_PERDORUESI1">
+      <End Role="PERDORUESI" EntitySet="PERDORUESI" />
+      <End Role="NJOFTIMET" EntitySet="NJOFTIMET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERDORUESI_GJUHA" Association="Self.FK_PERDORUESI_GJUHA">
+      <End Role="GJUHA" EntitySet="GJUHA" />
+      <End Role="PERDORUESI" EntitySet="PERDORUESI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POROSIA_KARTELA" Association="Self.FK_POROSIA_KARTELA">
+      <End Role="KARTELA" EntitySet="KARTELA" />
+      <End Role="POROSIA" EntitySet="POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POROSIA_LLOJI_PAGESES" Association="Self.FK_POROSIA_LLOJI_PAGESES">
+      <End Role="LLOJI_PAGESES" EntitySet="LLOJI_PAGESES" />
+      <End Role="POROSIA" EntitySet="POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POROSIA_STATUSI" Association="Self.FK_POROSIA_STATUSI">
+      <End Role="STATUSI_PAGESES" EntitySet="STATUSI_PAGESES" />
+      <End Role="POROSIA" EntitySet="POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_DETAJET_PRODUKTI" Association="Self.FK_PRODUKTI_DETAJET_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTI" />
+      <End Role="PRODUKTI_DETAJET" EntitySet="PRODUKTI_DETAJET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_GJUHA" Association="Self.FK_PRODUKTI_GJUHA">
+      <End Role="GJUHA" EntitySet="GJUHA" />
+      <End Role="PRODUKTI" EntitySet="PRODUKTI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_KATEGORIA_KATEGORIA" Association="Self.FK_PRODUKTI_IN_KATEGORIA_KATEGORIA">
+      <End Role="KATEGORIA" EntitySet="KATEGORIA" />
+      <End Role="PRODUKTI_IN_KATEGORIA" EntitySet="PRODUKTI_IN_KATEGORIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_KATEGORIA_PRODUKTI" Association="Self.FK_PRODUKTI_IN_KATEGORIA_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTI" />
+      <End Role="PRODUKTI_IN_KATEGORIA" EntitySet="PRODUKTI_IN_KATEGORIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_MEDIA_MEDIA" Association="Self.FK_PRODUKTI_IN_MEDIA_MEDIA">
+      <End Role="MEDIA" EntitySet="MEDIA" />
+      <End Role="PRODUKTI_IN_MEDIA" EntitySet="PRODUKTI_IN_MEDIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_MEDIA_PRODUKTI" Association="Self.FK_PRODUKTI_IN_MEDIA_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTI" />
+      <End Role="PRODUKTI_IN_MEDIA" EntitySet="PRODUKTI_IN_MEDIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_POROSIA_POROSIA" Association="Self.FK_PRODUKTI_IN_POROSIA_POROSIA">
+      <End Role="POROSIA" EntitySet="POROSIA" />
+      <End Role="PRODUKTI_IN_POROSIA" EntitySet="PRODUKTI_IN_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUKTI_IN_POROSIA_PRODUKTI" Association="Self.FK_PRODUKTI_IN_POROSIA_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTI" />
+      <End Role="PRODUKTI_IN_POROSIA" EntitySet="PRODUKTI_IN_POROSIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SLLIDE_MEDIA" Association="Self.FK_SLLIDE_MEDIA">
+      <End Role="MEDIA" EntitySet="MEDIA" />
+      <End Role="SLLIDE" EntitySet="SLLIDE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_STOKU_PRODUKTI" Association="Self.FK_STOKU_PRODUKTI">
+      <End Role="PRODUKTI" EntitySet="PRODUKTI" />
+      <End Role="STOKU" EntitySet="STOKU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SYSMENU_SYSMENU_PARENT" Association="Self.FK_SYSMENU_SYSMENU_PARENT">
+      <End Role="SYSMENU_PARENT" EntitySet="SYSMENU_PARENT" />
+      <End Role="SYSMENU" EntitySet="SYSMENU" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

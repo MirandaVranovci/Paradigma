@@ -1,0 +1,251 @@
+﻿
+@using eStore.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+    //var languages = (List<DBLayer.LANGUAGE>)ViewBag.Languages;
+    var returnUrl = ViewBag.ReturnUrl;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSO</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/theme/css/AdminLTE.css">
+    @*<link href="~/introJavaScript/bootstrap-responsive.min.css" rel="stylesheet" />*@
+    @*<link href="~/introJavaScript/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/introJS/demo.css" rel="stylesheet" />
+    <link href="~/Content/introJS/introjs.css" rel="stylesheet" />
+    <script src="~/Scripts/introJS/intro.js"></script>
+    @*<script src="~/loginBox/jquery-2.2.3.min.js"></script>
+        <script src="~/loginBox/jquery-ui.js"></script>
+        <script src="~/loginBox/wickedpicker.js"></script>
+        <link href="~/loginBox/jquery-ui.css" rel="stylesheet" />
+        <link href="~/loginBox/style.css" rel="stylesheet" />
+        <link href="~/loginBox/wickedpicker.css" rel="stylesheet" />*@
+    @*<script src='https://www.google.com/recaptcha/api.js'></script>*@
+</head>
+<body class="hold-transition login-page" style="
+      background-repeat no-repeat;
+      background-size 100% 100%;
+      -webkit-background-size 100% 100%;
+      -moz-background-size 100% 100%;
+      -o-background-size 100% 100%;
+      min-height 100vh;
+      transition background .80s ease-in-out;
+      -moz-transition background .80s ease-in-out;
+      -webkit-transition background .80s ease-in-out;
+      ">
+
+    <div class="login-box" style="border:1px solid lightgrey;box-shadow:1px 1px 5px 5px #ebe7e7" data-step="1" data-intro="Kjo eshte forma per tu qasur ne sistemin SMSF. Qasja behet permes Përdoruesi dhe Fjalkalimi dhe pastaj shtypet butoni Kyqu!" data-position='right' data-scrollTo='tooltip'>
+
+        <!-- /.login-logo -->
+
+        <div class="login-box-body">
+            @*@foreach (var item in languages)
+                {
+                    string gjuh;
+                    if(item.Name=="Shqip")
+                    {
+                        gjuh = "AL";
+                    }
+                    else if(item.Name == "Srpski")
+                    {
+                        gjuh = "SR";
+                    }
+                    else
+                    {
+                        gjuh = "EN";
+                    }
+                    <div class="col-xs-1 text-left" style="float:left;font-size:0.9em">
+                        <a href="@Url.Action("Kultura", "Base")/@(item.LanguageCode)">@gjuh</a>
+                    </div>
+                }*@
+            <a href="javascript:void(0);" onclick="javascript:introJs().start();" style="float:right;color:blue;margin-right:5px">
+                <i class="fa fa-question-circle" style="font-size:1.4em;color:#3c8dbc"></i>
+            </a>
+            <br /><br />
+            <div class="register-logo">
+                <a><b></b>SMSO</a><br />
+
+                <a style="font-size:12px">
+                    Sistemi per menaxhimin e Shopping online
+                </a>
+            </div>
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = returnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @*@Html.Recaptcha()*@
+                @Html.AntiForgeryToken()
+                <h4>Kyquni ne sistem</h4>
+                <hr />
+                <div class="form-group has-feedback" data-step="2" data-intro="Ne kete fushe shkruhet emri i perdoruesit tuaj per qasje" data-position='right' data-scrollTo='tooltip'>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Username" })
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group has-feedback" data-step="3" data-intro="Ne kete fushe shkruhet fjalekalimi juaj per qasje" data-position='right' data-scrollTo='tooltip'>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    <span class="glyphicon glyphicon-arrow-left form-control-feedback"></span>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+                @*<div class="form-group has-feedback" data-step="4" data-intro="Ne kete fushe zgjedhet domena" data-position='right' data-scrollTo='tooltip'>
+                        @Html.DropDownListFor(m => m.DomenaID,ViewBag.domains as SelectList,DBLayer.Resurset.Load("Zgjedh"), new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.DomenaID, "", new { @class = "text-danger" })
+                    </div>*@
+                <div class="row">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <!-- /.col -->
+                    <div class="col-xs-12" data-step="4" data-intro="Shtypni butonin dhe qasuni ne sistem!" data-position='right' data-scrollTo='tooltip'>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Kyqu</button>
+                    </div>
+                    <!-- /.col -->
+                </div><br />
+                @*<div class="row">
+                        <div class="col-md-12">
+                            <a href="../Account/ForgotPassword" style="float:right">@SMSF.Models.Resurset.Load("Keni harruar fjalëkalimin?")</a>
+                        </div>
+                    </div>*@
+            }
+
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+</body>
+</html>
+<!-- /.login-box -->
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@using SMSF.Models
+    @model LoginViewModel
+    @{
+        Layout = null;
+        ViewBag.Title = "Log in";
+    }
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SMSF</title>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+            <script src="~/Scripts/bootstrap.min.js"></script>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="~/Content/theme/css/AdminLTE.css" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />>
+    </head>
+    <body class="hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="#">
+                    <b>SMSF</b>
+                </a>
+            </div>
+            <div class="login-box-body">
+                <div class="login-box-msg">
+                    Kyçuni në sistem
+                </div>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new {role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group has-feedback">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Username" })
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group has-feedback">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Kyçu</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </body>
+    </html>*@

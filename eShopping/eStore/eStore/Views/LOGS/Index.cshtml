@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "Auditimi i perdoruesve";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+}
+
+<link href="~/introJavaScript/introjs.css" rel="stylesheet" />
+<script src="~/introJavaScript/intro.js"></script>
+
+<div class="box box-primary" >
+    <div class="box-header">
+        <h6 class="box-title">Kerko perdoruesin</h6>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group" data-step="2" data-intro="Kërkojmë përdoruesin sipas emrit" data-position="right" data-scrollTo='tooltip'>
+                    <input type="text" id="searchusertext" name="searchusertext" placeholder="Kerko perdoruesin" class="form-control">
+                    <span class="input-group-btn">
+                        <button type="button" id="searchuser" name="searchuser" class="btn btn-primary btn-flat"><i class="fa fa-search" style="font-size:1.3em"></i></button>
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="searchresult" class="table-responsive">
+
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="selectedemployee">
+
+                        </div>
+                    </div>
+                </div>
+                @*<div id="selectedemployee">
+
+                    </div>*@
+            </div>
+
+            <!-- ./col -->
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.box-body -->
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var invoiceform = $('form');
+        var token = $('input[name="__RequestVerificationToken"]', invoiceform).val();
+
+        var selecteduser = function (btn) {
+            var obj = { __RequestVerificationToken: token, id: $(btn).data("id") };
+
+            $.ajax({
+                url: "/desk/LOGS/SelectedUser",
+                cache: false,
+                type: "POST",
+                dataType: "html",
+                data: obj,
+                success: function (rs) {
+                    $("#selectedemployee").html(rs);
+
+                    $("#searchresult").empty();
+                },
+                error: function (jqXHR, error, errorThrown) {
+                    if (jqXHR.status && jqXHR.status == 400) {
+                        console.log(jqXHR.responseText);
+                    } else {
+                        console.log("Something went wrong");
+                    }
+                }
+            });
+        };
+
+        document.getElementById('searchusertext').onkeyup = function (e) {
+            if (e.keyCode != 13) return;
+
+            $("#searchuser").trigger("click");
+        };
+
+        $(document).ready(function () {
+            $("#searchuser").click(function () {
+                var search = $("#searchusertext").val();
+
+                var obj = { __RequestVerificationToken: token, value: search };
+
+                $.ajax({
+                    url: "/desk/LOGS/SearchUser",
+                    cache: false,
+                    type: "POST",
+                    dataType: "html",
+                    data: obj,
+                    success: function (rs) {
+                        $("#searchresult").html(rs);
+                        $("#searchusertext").val("");
+
+                        $("#selectedemployee").empty();
+                    },
+                    error: function (jqXHR, error, errorThrown) {
+                        if (jqXHR.status && jqXHR.status == 400) {
+                            console.log(jqXHR.responseText);
+                        } else {
+                            console.log("Something went wrong");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+  }

@@ -1,0 +1,200 @@
+﻿@model DataAccess.PERDORUESI
+
+@{
+
+    var logs = (List<DataAccess.LOG>)ViewBag.Logs;
+    var logsentry = (List<DataAccess.LOG_ENTRY>)ViewBag.LogEntry;
+    var logsactivity = (List<DataAccess.LOG_USERACTIVITY>)ViewBag.LogActivity;
+
+    Layout = null;
+
+}
+<link href="~/introJavaScript/introjs.css" rel="stylesheet" />
+<script src="~/introJavaScript/intro.js"></script>
+
+
+<!-- Main content -->
+<section class="content">
+   
+    <div class="col-md-12">
+        <div class="box-body table-responsive">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#activity" data-toggle="tab">Logu</a></li>
+                    <li><a href="#timeline" data-toggle="tab">Qasjet</a></li>
+                    <li><a href="#settings" data-toggle="tab">Aktivitetet</a></li>
+                </ul>
+                <div class="tab-content">
+
+                    <div class="active tab-pane" id="activity">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="tabelaTest1" class="table table-hover table-condensed table-striped table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Aksioni
+                                            </th>
+                                            <th>
+                                                Tabela
+                                            </th>
+                                            <th>
+                                                Kolona
+                                            </th>
+                                            <th>
+                                                Vlera aktuale
+                                            </th>
+                                            <th>
+                                                Vlera paraprake
+                                            </th>
+                                            <th>Data</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       @foreach (var item in logs)
+                                       {
+                                           if (item.ColumnName != "*ALL")
+                                           {
+                                                    <tr>
+                                                        <td>
+                                                            @item.EventType
+                                                        </td>
+                                                        <td>
+                                                            @item.TableName.Split('_')[0]
+                                                        </td>
+                                                        <td>
+                                                            @item.ColumnName
+                                                        </td>
+                                                       <td>
+                                                            @item.NewValue
+                                                            </td>
+                                      <td>
+                                            @item.OriginalValue
+                                            </td>
+                                       <td>
+                                                            @item.Created_date.ToString("dd/MM/yyyy HH:mm")
+                                                        </td>
+                                                        <td>
+                                                            <a data-step="3" data-intro="Për të paraqitur në formatin pdf kliko butonin" data-position="right" data-scrollTo='tooltip' href="@Url.Action("PDF","FAQs",new { id = item.ID })" title="PDF" target="_blank">
+                                                                <i class="fa fa-print" style="font-size:1.4em;color:#243B55"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                    </tbody>
+                                   
+                                </table>
+                            </div>                          
+                        </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="timeline">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="tabelaTest2" class="table table-hover table-condensed table-striped table-responsive ">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                               Kyqje/Qkyqje
+                                            </th>
+                                            <th>
+                                                Data
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in logsentry)
+                                        {
+                                            <tr>
+                                                @if (item.Type == 1)
+                                                {
+                                                    <td>
+                                                        Kyqje ne sistem
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td>
+                                                        Qkyqje
+                                                    </td>
+                                                }
+
+                                                <td>
+                                                    @item.EntryDate.ToString("dd/MM/yyyy HH:mm")
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="settings">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="tabelaTest" class="table table table-hover table-condensed table-striped table-responsive ">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Aktiviteti
+                                            </th>
+                                            <th>
+                                                Data
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in logsactivity)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @item.Activity
+                                                </td>
+                                                <td>
+                                                    @item.EntryDate.ToString("dd/MM/yyyy HH:mm")
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+        </div>
+        <!-- /.nav-tabs-custom -->
+    </div>
+
+    <!-- /.col -->
+    <!-- /.row -->
+</section>
+
+<script type="text/javascript">
+    $('#tabelaTest').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true
+    });
+
+    $('#tabelaTest2').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true
+    });
+</script>
+
+

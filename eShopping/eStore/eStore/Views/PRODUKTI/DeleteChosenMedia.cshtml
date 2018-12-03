@@ -1,0 +1,45 @@
+﻿
+@model DataAccess.PRODUKTI_IN_MEDIA
+@{
+    Layout = null;
+    ViewBag.Title = "Fshij median";
+}
+
+
+<button class="btn btn-danger btn-flat" data-id="@Model.MediaID" data-produktiid="@Model.ProduktiID" onclick="ConfirmDelete(this)" style="margin-right:5px">
+    <i class="fa fa-trash-o" style="font-size:1.1em"></i>&nbsp;
+    Po
+</button>
+<button class="btn btn-default btn-flat" data-dismiss="modal" id="dismissmodalid">
+    <i class="fa fa-refresh" style="font-size:1.1em"></i>&nbsp;
+    Jo
+</button>
+
+
+<script type="text/javascript">
+
+    var ConfirmDelete = function (btn) {
+        var obj = { __RequestVerificationToken: token, MediaID: $(btn).data("id"), ProduktiID: $(btn).data("produktiid") };
+
+        $.ajax({
+            url: "/PRODUKTI/DeleteChosenMedia_POST",
+            cache: false,
+            type: "POST",
+            dataType: "html",
+            data: obj,
+            success: function (rs) {
+                console.log(rs);
+                loadmedialista();
+                loadmedianeProdukte();
+                $("#dismissmodalid2").trigger("click");
+            },
+            error: function (jqXHR, error, errorThrown) {
+                if (jqXHR.status && jqXHR.status == 400) {
+                    console.log(jqXHR.responseText);
+                } else {
+                    console.log("Something went wrong");
+                }
+            }
+        });
+    }
+</script>

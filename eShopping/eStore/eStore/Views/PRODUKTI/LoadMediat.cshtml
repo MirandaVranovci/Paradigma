@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DataAccess.MEDIAT>
+@{
+    Layout = null;
+
+}
+
+<div class="table table-responsive box box-primary" style="box-shadow:3px 3px 3px lightgray;border-right:1px solid lightgray;border-left:1px solid lightgray;border-bottom:1px solid lightgray">
+    <div class="box-header with-border">
+        Lista e Mediave
+
+    </div>
+    <div class="box-body">
+        <table class="table table-hover table-condensed table-striped table-responsive searchmedia">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">
+                        Media
+                    </th>
+                   <th>
+
+                   </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                 
+                <tr>
+                    <td>
+                        <img class="profile-user-img img-responsive img-circle" style="width:50px;height:50px;" src="@item.Shtegu" alt="@item.Emri">
+
+                    </td>
+                    <td>
+                        <button id="btnshtomedia_@item.ID" type="button" data-mediaid="@item.ID" onclick="shtomedia(this)" class="btn btn-primary btn-xs btnchoosearticle"><i class="glyphicon glyphicon-plus"></i>&nbsp;Shto</button>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}
+
+
+<script type="text/javascript">
+    $('.searchmedia').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false
+    });
+</script>
